@@ -1,15 +1,12 @@
 # NET4005 - Assignment 3 - SOAP
 
-NET 4005 - Assignment 3
 Alexandru Viman - 100967379
 Georges Ankenmann - 100935237
-
-
-- BUILD:   javac Publisher.java
-- RUN:     java  Publisher
-
-- BUILD:   javac Client.java
-- RUN:     java  Client
+----------------------------------
+BUILD:   javac Publisher.java
+RUN:     java  Publisher
+BUILD:   javac Client.java
+RUN:     java  Client
 
 -- FILES --
 - Publisher.java
