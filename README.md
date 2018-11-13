@@ -1,10 +1,10 @@
 # NET4005 - Assignment 3 - SOAP
 
-\+---------- NET 4005 - Assignment 3 ----------+
-+-------- Alexandru Viman - 100967379 --------+
-+------- Georges Ankenmann - 100935237 -------+
-+---------------- README.TXT -----------------+
-+---------------------------------------------+
++---------- NET 4005 - Assignment 3 ----------+
+\n+-------- Alexandru Viman - 100967379 --------+
+\+------- Georges Ankenmann - 100935237 -------+
+\+---------------- README.TXT -----------------+
+\+---------------------------------------------+
 
 - BUILD:   javac Publisher.java
 - RUN:     java  Publisher
@@ -46,7 +46,9 @@ ServiceB_Impl.java
 - Returns the server's response to the Client
 
 -- SOAP FUNCTIONS --
+
 ServiceA.getSvcName()
+
 ServiceB.getSvcName()
 
 
