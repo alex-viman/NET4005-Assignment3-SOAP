@@ -5,5 +5,5 @@ import java.net.URL;
 @WebService(targetNamespace="http://localhost",serviceName="ServiceB")
 public interface ServiceB
 {
-    @WebMethod public String getSvcName(URL x);
+    @WebMethod String getSvcName(URL x) throws Exception;
 }
