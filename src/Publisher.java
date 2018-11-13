@@ -1,3 +1,11 @@
+//------------------------------------------------------------//
+// FILENAME - Publisher.java                                 //
+// AUTHORS - Alexandru Viman   - 100967379                  //
+//         - Georges Ankenmann - 100935237                 //
+// COURSE - NET4005 - Assignment 3                        //
+// DESCRIPTION - SOAP API Endpoint (see REAMDE.TXT)      //
+//------------------------------------------------------//
+
 import javax.xml.ws.Endpoint;
 
 public class Publisher{

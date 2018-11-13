@@ -1,3 +1,12 @@
+//------------------------------------------------------------//
+// FILENAME - Client  .java                                  //
+// AUTHORS - Alexandru Viman   - 100967379                  //
+//         - Georges Ankenmann - 100935237                 //
+// COURSE - NET4005 - Assignment 3                        //
+// DESCRIPTION - Client that interfaces with  the        //
+//             - SOAP Publisher's endpoints             //
+//-----------------------------------------------------//
+
 import java.net.URL;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;

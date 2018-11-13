@@ -1,3 +1,12 @@
+//------------------------------------------------------------//
+// FILENAME - ServiceB_Impl.java                             //
+// AUTHORS - Alexandru Viman   - 100967379                  //
+//         - Georges Ankenmann - 100935237                 //
+// COURSE - NET4005 - Assignment 3                        //
+// DESCRIPTION - ServiceB returns the responding         //
+//             - server's IP and service name           //
+//-----------------------------------------------------//
+
 import javax.jws.WebService;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
@@ -11,9 +20,16 @@ import com.sun.net.httpserver.HttpExchange;
 @WebService(targetNamespace="http://localhost",serviceName="ServiceB",endpointInterface="ServiceB",portName="ServiceBPort")
 public class ServiceB_Impl implements ServiceB {
 
+    //Holds values for the number of requests each server responds to
     static int[] count = new int[2];
+
+    //Allows API to keep track of total number of requests for a particular service
     static int totalReqs = 0;
 
+    //getSvcName is the only function for ServiceB
+    //Clients call this function on port 9000
+    //The SOAP server dispatches dispatches requests in a Round Robin manner (load-balanced)
+    //Dispatches tasks to ports 9001 or 9002
     @Resource WebServiceContext wsContext;
     public String getSvcName(URL x) throws Exception
     {
@@ -28,15 +44,10 @@ public class ServiceB_Impl implements ServiceB {
         if (x.getPort() == 9000) {
             totalReqs++;
 
-            if (totalReqs % 2 == 1) //Server 9001
-            {
-                ServiceB sb_functions = b_services[0].getPort(ServiceB.class);
-                return (sb_functions.getSvcName(b_servers[0]));
-            } else //Server 9002
-            {
-                ServiceB sb_functions = b_services[1].getPort(ServiceB.class);
-                return (sb_functions.getSvcName(b_servers[1]));
-            }
+            //if (((totalReqs+1) % 2) == 0) -> Server 9001
+            //if (((totalReqs+1) % 2) == 1) -> Server 9002
+            ServiceB sb_functions = b_services[(totalReqs+1) % 2].getPort(ServiceB.class);
+            return (sb_functions.getSvcName(b_servers[(totalReqs+1) % 2]));
         }
 
         MessageContext context = wsContext.getMessageContext();
@@ -51,6 +62,7 @@ public class ServiceB_Impl implements ServiceB {
         return "ServiceB = " + localHost_ip + ":" + x.getPort();
     }
 
+    //Allows the SOAP Publisher to see which servers are being interacted with and how many requests they've handled.
     private void updateConsole(InetSocketAddress remoteHost, InetSocketAddress localHost)
     {
         String remoteHost_ip = remoteHost.getAddress().toString();
@@ -65,17 +77,11 @@ public class ServiceB_Impl implements ServiceB {
 
         if (localHost_port.equals("9001")) {
             count[0]++;
-            if (count[0] == 1)
-                System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " has responded to " + count[0] + " request.");
-            else
-                System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " has responded to " + count[0] + " requests.");
+            System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " requests == " + count[0]);
         }
         else if (localHost_port.equals("9002")) {
             count[1]++;
-            if (count[1] == 1)
-                System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " has responded to " + count[1] + " request.");
-            else
-                System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " has responded to " + count[1] + " requests.");
+            System.out.println("\tServer " + localHost_ip + ":" + localHost_port + " requests == " + count[1]);
         }
     }
 }
