@@ -3,12 +3,16 @@
 Alexandru Viman - 100967379  
 Georges Ankenmann - 100935237  
 ----------------------------------  
+# -- REQUIREMENTS --
+- Java 8
+
+# -- HOW TO --
 BUILD:	javac Publisher.java  
 RUN:	java  Publisher  
 BUILD:	javac Client.java  
 RUN:	java  Client  
 
--- FILES --
+# -- FILES --
 - Publisher.java
 - Client.java
 - ServiceA.java
@@ -41,7 +45,7 @@ ServiceB_Impl.java
 - This service listens for requests on port 9000 and dispatches them to back-end servers on ports 9001 or 9002
 - Returns the server's response to the Client
 
--- SOAP FUNCTIONS --
+# -- SOAP FUNCTIONS --
 - ServiceA.getSvcName()
 - ServiceB.getSvcName()
 
