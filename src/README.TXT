@@ -4,6 +4,11 @@
 +---------------- README.TXT -----------------+
 +---------------------------------------------+
 
+-- REQUIREMENTS --
+Java 8
+
+-- HOW TO --
+
 BUILD:   javac Publisher.java
 RUN:     java  Publisher
 
