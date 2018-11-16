@@ -1,4 +1,4 @@
-+---------- NET 4005 - Assignment 3 ----------+
++---------- NET 4005 - Assignment 2 ----------+
 +-------- Alexandru Viman - 100967379 --------+
 +------- Georges Ankenmann - 100935237 -------+
 +---------------- README.TXT -----------------+
@@ -8,7 +8,9 @@ BUILD:   javac Publisher.java
 RUN:     java  Publisher
 
 BUILD:   javac Client.java
+RUN:     java  Client <Service_Address1> <Service_Address2>
 RUN:     java  Client
+EXAMPLE: java  http://localhost:8000/ServiceA?wsdl http://localhost:9000/ServiceB?wsdl
 
 -- FILES --
 - Publisher.java
@@ -28,6 +30,9 @@ Client.java
 - The Client interfaces with the SOAP API (Publisher) and sends it requests for both services
 - The console output is for SOAP server replies
   - Replies are formatted as: Service# = server_ip:server_port
+- Supports two modes: Static and Dynamic
+  - Static: No command line arguments required
+  - Dynamic: User must specify two SOAP service addresses
 
 ServiceA.java
 - A simple Interface for the service's supported functions
